@@ -9,6 +9,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return PageView(
+      controller: PageController(initialPage: 0),
+      children: [
+        Container(
+          color: Colors.blue,
+        ),
+        Container(
+          color: Colors.green,
+        ),
+        Container(
+          color: Colors.red,
+        )
+      ],
+    );
   }
 }
