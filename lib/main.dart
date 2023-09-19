@@ -21,14 +21,14 @@ class _MyWidgetState extends State<MyWidget> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text(a[i])),
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            Icon(Icons.abc),
-            Icon(Icons.baby_changing_station),
-            Icon(Icons.cabin)
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: i,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.abc), label: "사고등록"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.baby_changing_station), label: "사고현황"),
+            BottomNavigationBarItem(icon: Icon(Icons.cabin), label: "통계"),
           ],
-          selectedIndex: i,
-          onDestinationSelected: (value) {},
         ),
         body: PageView(
           onPageChanged: (int page) {
