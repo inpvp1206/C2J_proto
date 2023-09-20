@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyWidget());
 }
+final mc = Colors.lightGreenAccent;
+final tc = Colors.black87;
 
 final a = ["사고등록", "사고현황", "통계"];
 final controller = PageController(initialPage: 0);
@@ -20,14 +22,15 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text(a[i])),
+        appBar: AppBar(title: Text(a[i], style: TextStyle(color: tc, fontWeight: FontWeight.w700),) ,backgroundColor: Colors.lightGreenAccent, centerTitle: true, leading: Icon(Icons.account_box_rounded,color: tc,)),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: i,
+          selectedItemColor: mc.shade400,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.abc), label: "사고등록"),
+            BottomNavigationBarItem(icon: Icon(Icons.edit), label: "사고등록"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.baby_changing_station), label: "사고현황"),
-            BottomNavigationBarItem(icon: Icon(Icons.cabin), label: "통계"),
+                icon: Icon(Icons.car_crash), label: "사고현황"),
+            BottomNavigationBarItem(icon: Icon(Icons.attach_file), label: "통계"),
           ],
         ),
         body: PageView(
