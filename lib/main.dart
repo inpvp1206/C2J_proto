@@ -1,10 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(const MyWidget());
 }
+ 
 final mc = Colors.lightGreenAccent;
 final tc = Colors.black87;
+
 
 final a = ["사고등록", "사고현황", "통계"];
 final controller = PageController(initialPage: 0);
@@ -17,7 +22,13 @@ class MyWidget extends StatefulWidget {
   State<MyWidget> createState() => _MyWidgetState();
 }
 
+
 class _MyWidgetState extends State<MyWidget> {
+   static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+    final _controller = Completer<GoogleMapController>();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,8 +52,15 @@ class _MyWidgetState extends State<MyWidget> {
           },
           controller: controller,
           children: [
-            Container(
-              color: Colors.blue,
+            Container(  
+              child: GoogleMap(
+              mapType: MapType.hybrid,
+              initialCameraPosition: _kGooglePlex,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
+            ),
+      
             ),
             Container(
               color: Colors.green,
