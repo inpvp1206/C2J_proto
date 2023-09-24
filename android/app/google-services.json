@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709714075760",
+    "project_id": "c2j-proto",
+    "storage_bucket": "c2j-proto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709714075760:android:332d1518d62a5671b194b5",
+        "android_client_info": {
+          "package_name": "com.example.proto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_czkNGDD7W8qpPBq3xxO3mrIrITxYVMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
