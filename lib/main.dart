@@ -52,6 +52,7 @@ final controller = PageController(initialPage: 0);
 int i = 0;
 int s = 0;
 double dis = 0;
+double acc = 0;
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
@@ -63,6 +64,13 @@ class MyWidget extends StatefulWidget {
 initdistance(a, b) async {
   dis = await Geolocator.distanceBetween(
       a.latitude, a.longitude, b.latitude, b.longitude);
+      print(dis.to);
+      if (dis > 1000) {
+        acc = BitmapDescriptor.hueBlue;
+
+      } else {
+        acc = 0.0;
+      }
 }
 
 LocationData? _locationData;
@@ -400,6 +408,7 @@ class _MyWidgetState extends State<MyWidget> {
                           });
                         }
                         initacMarker(accident, accident_id) async {
+                          initdistance(ps, accident['loca']);
                           var markeridval = accident_id;
                           final MarkerId acmarkerId = MarkerId(markeridval);
                           final Marker acmarker = Marker(
@@ -584,8 +593,9 @@ class _MyWidgetState extends State<MyWidget> {
                                       );
                                     });
                               },
+                              
                               icon: BitmapDescriptor.defaultMarkerWithHue(
-                                  BitmapDescriptor.hueAzure),
+                                  acc),
                               markerId: acmarkerId,
                               position: LatLng(accident['loca'].latitude,
                                   accident['loca'].longitude),
